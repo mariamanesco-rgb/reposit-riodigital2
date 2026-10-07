@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="64" fill="#6e3bb7"/>
-  <rect x="38" y="38" width="436" height="436" rx="48" fill="#d7bff1" stroke="#3a2452" stroke-width="20"/>
-  <text x="256" y="234" text-anchor="middle" font-family="monospace" font-weight="900" font-size="124" fill="#3d1f68">F90</text>
-  <path d="M128 306c-34 0-56-23-56-48 0-22 17-40 39-40 18 0 32 11 40 27 8-25 31-40 57-40 36 0 61 26 61 58 0 23-11 40-26 48 37 4 63 29 63 58 0 35-28 64-64 64-27 0-50-15-62-37-14 25-40 38-69 38-40 0-72-26-72-60 0-27 21-52 49-58Z" fill="#ffe04b" stroke="#3a2452" stroke-width="18"/>
-</svg>
