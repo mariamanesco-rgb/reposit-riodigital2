@@ -21,3 +21,8 @@ Substitua `logo-placeholder.png` pela sua própria logo mantendo o mesmo nome e 
 
 ## Observação clínica
 A base é um recurso educacional e de consulta rápida. A seleção final de exercícios, intensidade, volume e progressão deve ser individualizada por profissional habilitado.
+
+
+## Atualização do armazenamento e ícones
+
+Esta revisão utiliza um banco IndexedDB novo (`Fisio90s_V2_DB`, versão 1), isolado do banco anterior. Os ícones do PWA são arquivos locais `icon-192.png` e `icon-512.png`, incluídos no projeto e no cache do Service Worker.

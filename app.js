@@ -2,7 +2,7 @@
 (() => {
   "use strict";
 
-  const DB_NAME = "Fisio90sDB";
+  const DB_NAME = "Fisio90s_V2_DB";
   const DB_VERSION = 1;
   const STORE_USERS = "users";
   const STORE_PATIENTS = "patients";
@@ -67,8 +67,25 @@
           searches.createIndex("userCreated", ["user", "createdAt"]);
         }
       };
-      request.onsuccess = () => { db = request.result; resolve(db); };
-      request.onerror = () => reject(request.error);
+      request.onsuccess = () => {
+        db = request.result;
+        // Se outra aba solicitar uma migração futura, libere a conexão atual.
+        db.onversionchange = () => {
+          db.close();
+          db = null;
+        };
+        resolve(db);
+      };
+      request.onerror = () => {
+        const error = request.error || new Error("Falha ao abrir o IndexedDB.");
+        console.error("IndexedDB open error:", error);
+        reject(error);
+      };
+      request.onblocked = () => {
+        const error = new Error("A abertura do banco foi bloqueada por outra aba. Feche outras abas do Fisio90s e recarregue.");
+        console.error(error.message);
+        reject(error);
+      };
     });
   }
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = "fisio90s-offline-v1";
+const CACHE_NAME = "fisio90s-offline-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -7,7 +7,9 @@ const APP_SHELL = [
   "./database.js",
   "./manifest.json",
   "./sw.js",
-  "./logo-placeholder.png"
+  "./logo-placeholder.png",
+  "./icon-192.png",
+  "./icon-512.png"
 ];
 
 self.addEventListener("install", event => {
