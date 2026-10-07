@@ -2,109 +2,184 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#6e43a6">
-  <meta name="description" content="Fisio+ — guia científico e gerenciador local de pacientes.">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#4b168a">
+  <meta name="description" content="Fisio90s - Fisioterapia Offline">
+  <title>Fisio90s ¬ Fisioterapia Offline</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="logo-placeholder.png" type="image/png">
   <link rel="stylesheet" href="style.css">
-  <title>Fisio+</title>
 </head>
 <body>
-<div id="app">
-  <section id="welcome-screen" class="screen active">
-    <div class="window welcome-window">
-      <div class="titlebar"><span>FISIO_PLUS.EXE</span><button class="window-btn" data-action="theme">◐</button></div>
-      <div class="window-body center">
-        <div class="logo-frame"><img src="logo-placeholder.png" alt="Logo Fisio+" class="logo-large"></div>
-        <span class="pixel-kicker">FISIOTERAPIA // OFFLINE FIRST</span>
-        <h1>Fisio+</h1>
-        <p class="lead">Guia de condutas + gerenciador de pacientes + sugestões adaptadas.</p>
-        <button id="start-btn" class="btn btn-yellow btn-big">🐾 Começar</button>
-        <p class="tiny-note">Seus dados ficam no armazenamento local deste navegador.</p>
-      </div>
+  <div id="boot" class="boot-screen">
+    <div class="boot-box">
+      <div class="boot-title">FISIO90S.EXE</div>
+      <pre>Inicializando GERENCIADOR LOCAL...
+Carregando BASE CIENTÍFICA...
+Verificando armazenamento IndexedDB...</pre>
+      <div class="progress"><span></span></div>
+      <small>OFFLINE-FIRST SYSTEM / v1.0</small>
     </div>
-  </section>
+  </div>
 
-  <section id="user-screen" class="screen">
-    <div class="window small-window">
-      <div class="titlebar"><span>USUARIO.TXT</span><button class="window-btn" data-action="theme">◐</button></div>
-      <div class="window-body">
-        <div class="dialog-icon">🩺</div>
-        <h2>Identificação local</h2>
-        <p>Digite seu nome de usuário. Espaços e caracteres especiais são removidos automaticamente.</p>
-        <label for="username">Nome de usuário</label>
-        <input id="username" type="text" maxlength="40" autocomplete="off" placeholder="@malu" inputmode="text">
-        <button id="enter-btn" class="btn btn-yellow btn-big">Entrar</button>
-        <p id="user-feedback" class="tiny-note"></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="main-screen" class="screen app-screen">
-    <header class="site-header">
-      <div class="brand"><img src="logo-placeholder.png" alt="Logo"><div><span class="pixel-kicker">FISIO_PLUS</span><strong>Guia & Pacientes</strong></div></div>
-      <div class="header-actions"><button class="btn btn-small" data-action="theme">◐ Tema</button><button id="install-btn" class="btn btn-yellow btn-small">⬇ Baixar / Instalar Aplicativo</button></div>
-    </header>
-    <main class="main-container">
-      <div class="user-bar"><span>Usuário: <strong id="current-user">@—</strong></span><button id="logout-btn" class="btn btn-small">Sair</button></div>
-      <div id="install-banner" class="install-banner" hidden><strong>📦 Fisio+ no seu dispositivo</strong><span>Instale para abrir como aplicativo e usar offline.</span><button id="install-banner-btn" class="btn btn-yellow">Baixar / Instalar Aplicativo</button></div>
-      <div class="menu-grid">
-        <button id="open-database" class="menu-card"><span class="menu-icon">🧛</span><span><b>Consultar Base Científica</b><small>Patologias, testes, condutas, exercícios e referências.</small></span><span>›</span></button>
-        <button id="open-patients" class="menu-card"><span class="menu-icon">🐾</span><span><b>Pacientes e Prescrições</b><small>Perfil, fatores de risco, sintomas e adaptações.</small></span><span>›</span></button>
-      </div>
-      <div class="retro-warning"><strong>⚠ Responsabilidade:</strong> este aplicativo é um guia de consulta rápida baseado em evidências e não substitui a avaliação profissional. As adaptações são sugestões educacionais e não uma prescrição autônoma.</div>
-    </main>
-  </section>
-
-  <section id="database-screen" class="screen app-screen">
-    <header class="site-header"><button class="btn btn-small" data-back="main">← Menu</button><div class="brand"><img src="logo-placeholder.png" alt="Logo"><strong>Base Científica</strong></div><button class="btn btn-small" data-action="theme">◐</button></header>
-    <main class="main-container">
-      <div class="section-heading"><div><span class="pixel-kicker">DATABASE.EXE</span><h2>Guia de Condutas</h2></div><span id="db-count" class="counter">0 itens</span></div>
-      <div class="search-window"><label for="database-search">🔎 Buscar patologia, região, sintoma ou palavra-chave</label><input id="database-search" type="search" placeholder="Ex.: lombalgia, pé, formigamento..."></div>
-      <div id="recent-searches" class="recent-box"></div>
-      <div id="database-results" class="database-list"></div>
-    </main>
-  </section>
-
-  <section id="patients-screen" class="screen app-screen">
-    <header class="site-header"><button class="btn btn-small" data-back="main">← Menu</button><div class="brand"><img src="logo-placeholder.png" alt="Logo"><strong>Pacientes</strong></div><button class="btn btn-small" data-action="theme">◐</button></header>
-    <main class="main-container">
-      <div class="section-heading"><div><span class="pixel-kicker">PATIENTS.DB</span><h2>Gerenciador</h2></div><button id="new-patient-btn" class="btn btn-yellow">🐾 Novo paciente</button></div>
-      <input id="patient-search" class="wide-search" type="search" placeholder="Buscar somente pelo nome...">
-      <div id="patients-list" class="patient-grid"></div>
-    </main>
-  </section>
-
-  <section id="patient-form-screen" class="screen app-screen">
-    <header class="site-header"><button id="back-to-patients" class="btn btn-small">← Pacientes</button><div class="brand"><img src="logo-placeholder.png" alt="Logo"><strong id="patient-form-title">Novo paciente</strong></div><button class="btn btn-small" data-action="theme">◐</button></header>
-    <main class="main-container form-layout">
-      <form id="patient-form" class="window form-window">
-        <div class="titlebar"><span>FICHA_CLINICA.TXT</span></div>
-        <div class="window-body">
-          <div class="form-section"><h3>1. Perfil</h3><div class="form-grid"><div><label for="patient-name">Nome *</label><input id="patient-name" required maxlength="100"></div><div><label for="patient-age">Idade *</label><input id="patient-age" type="number" min="0" max="130" required></div></div></div>
-          <div class="form-section"><h3>2. Fatores de risco / comorbidades</h3><div class="check-grid" id="risk-checks">
-            <label><input type="checkbox" value="Obesidade"> Obesidade</label><label><input type="checkbox" value="Hipertensão"> Hipertensão</label><label><input type="checkbox" value="Diabetes"> Diabetes</label><label><input type="checkbox" value="Osteoporose"> Osteoporose</label><label><input type="checkbox" value="Doença Cardiovascular"> Doença cardiovascular</label><label><input type="checkbox" value="Risco de Queda"> Risco de queda</label><label><input type="checkbox" value="Artrose prévia"> Artrose prévia</label><label><input type="checkbox" value="Sedentarismo"> Sedentarismo</label><label><input type="checkbox" value="Tabagismo"> Tabagismo</label><label><input type="checkbox" value="Fibromialgia"> Fibromialgia</label><label><input type="checkbox" value="Asma/DPOC"> Asma/DPOC</label><label><input type="checkbox" value="Doença Neurológica"> Doença neurológica</label><label><input type="checkbox" value="Histórico de Queda"> Histórico de queda</label><label><input type="checkbox" value="Obesidade Sarcopênica"> Obesidade sarcopênica</label>
-          </div></div>
-          <div class="form-section"><h3>3. Queixa principal / patologia de base</h3><label for="pathology-search">Digite para buscar diretamente na Base Científica</label><input id="pathology-search" autocomplete="off" placeholder="Ex.: lombalgia, fascite plantar, AVC..."><div id="pathology-suggestions" class="autocomplete"></div><input id="selected-pathology" type="hidden"></div>
-          <div class="form-section"><h3>4. Sintomas atuais</h3><div class="check-grid" id="symptom-checks">
-            <label><input type="checkbox" value="Dor articular"> Dor articular</label><label><input type="checkbox" value="Dor irradiada"> Dor irradiada</label><label><input type="checkbox" value="Fadiga muscular"> Fadiga muscular</label><label><input type="checkbox" value="Edema"> Edema</label><label><input type="checkbox" value="Fraqueza muscular"> Fraqueza muscular</label><label><input type="checkbox" value="Alteração de sensibilidade (parestesia)"> Alteração de sensibilidade (parestesia)</label><label><input type="checkbox" value="Rigidez matinal"> Rigidez matinal</label><label><input type="checkbox" value="Perda de mobilidade"> Perda de mobilidade</label><label><input type="checkbox" value="Desequilíbrio"> Desequilíbrio</label><label><input type="checkbox" value="Dor neuropática"> Dor neuropática</label><label><input type="checkbox" value="Falta de ar"> Falta de ar</label><label><input type="checkbox" value="Crepitação articular"> Crepitação articular</label><label><input type="checkbox" value="Espasmo muscular"> Espasmo muscular</label><label><input type="checkbox" value="Instabilidade"> Instabilidade</label>
-          </div></div>
-          <div class="form-section"><h3>5. Observações clínicas</h3><textarea id="patient-notes" rows="5" placeholder="Informações adicionais relevantes para o atendimento..."></textarea></div>
-          <div class="form-actions"><button type="submit" class="btn btn-yellow">💾 Salvar e gerar sugestão</button><button type="button" id="cancel-patient" class="btn">Cancelar</button></div>
+  <div id="app" class="app hidden">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img src="logo-placeholder.png" alt="Logo Fisio90s">
+        <div>
+          <div class="brand-name">FISIO90S</div>
+          <div class="brand-sub">¬ FISIOTERAPIA OFFLINE</div>
         </div>
-      </form>
-      <aside class="window safety-window"><div class="titlebar"><span>CLINICAL_HELP.TXT</span></div><div class="window-body"><h3>🩺 Atenção clínica</h3><p>O sistema recupera exercícios da base e gera adaptações gerais a partir do perfil. Ele não determina diagnóstico, dose, carga, frequência, progressão ou contraindicações individualizadas.</p><ul><li>Revise sinais de alerta e contraindicações.</li><li>Considere exame físico e contexto.</li><li>Valide a seleção antes de aplicar.</li><li>Encaminhe quando houver necessidade.</li></ul></div></aside>
-    </main>
-  </section>
+      </div>
+      <div class="top-status">
+        <span id="onlineStatus">● OFFLINE READY</span>
+        <button id="installBtn" class="install-btn" type="button">⬇ Baixar / Instalar Aplicativo</button>
+        <button id="themeBtn" class="tiny-btn" type="button" title="Alternar modo escuro">☾</button>
+      </div>
+    </header>
 
-  <section id="patient-result-screen" class="screen app-screen">
-    <header class="site-header"><button class="btn btn-small" data-back="patients">← Pacientes</button><div class="brand"><img src="logo-placeholder.png" alt="Logo"><strong id="result-title">Paciente</strong></div><button class="btn btn-small" data-action="theme">◐</button></header>
-    <main class="main-container"><div id="patient-summary" class="result-grid"></div></main>
-  </section>
-</div>
-<footer class="site-footer"><span>🐾</span><span>🩺</span><span>🧛</span><span>Fisio+ • offline first</span><span>Este aplicativo é um guia de consulta rápida baseado em evidências e não substitui a avaliação profissional.</span></footer>
-<script src="database.js"></script>
-<script src="app.js"></script>
+    <main class="desktop-shell">
+      <section id="welcomeView" class="view">
+        <div class="window welcome-window">
+          <div class="titlebar">WELCOME.EXE <span>[_] [□] [X]</span></div>
+          <div class="window-body center-body">
+            <img src="logo-placeholder.png" alt="Logo Fisio90s" class="welcome-logo">
+            <h1>FISIO90S ¬ FISIOTERAPIA OFFLINE</h1>
+            <p class="terminal-copy">UM GERENCIADOR LOCAL PARA CONSULTA CIENTÍFICA E ORGANIZAÇÃO DE PACIENTES.</p>
+            <button id="startBtn" class="action-btn huge">▶ COMEÇAR</button>
+            <div class="warning-box">Este aplicativo é um guia de consulta rápida baseado em evidências e não substitui a avaliação profissional.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="userView" class="view hidden">
+        <div class="window narrow-window">
+          <div class="titlebar">PAINEL_USUARIO.EXE <span>[_] [□] [X]</span></div>
+          <div class="window-body">
+            <p>IDENTIFIQUE O OPERADOR LOCAL:</p>
+            <label for="usernameInput">USUÁRIO</label>
+            <input id="usernameInput" class="terminal-input" type="text" autocomplete="username" placeholder="@maria" maxlength="30">
+            <small>Use somente letras, números, ponto, hífen e underscore. Espaços serão removidos.</small>
+            <button id="loginBtn" class="action-btn full">▶ ENTRAR</button>
+            <div id="loginMsg" class="message"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="menuView" class="view hidden">
+        <div class="window">
+          <div class="titlebar">GERENCIADOR LOCAL <span>[_] [□] [X]</span></div>
+          <div class="window-body">
+            <div class="status-panel">
+              <strong>STATUS.DAT</strong>
+              <span id="userStatus">USUÁRIO: --</span>
+              <span id="patientCountStatus">PACIENTES: 0</span>
+            </div>
+            <div class="menu-grid">
+              <button id="goDatabase" class="menu-card">
+                <span class="menu-icon">🩺</span><strong>CONSULTAR BASE CIENTÍFICA</strong><small>GUIA_CONDUTAS.DAT</small>
+              </button>
+              <button id="goPatients" class="menu-card">
+                <span class="menu-icon">🐾</span><strong>PACIENTES E PRESCRIÇÕES</strong><small>PACIENTES.EXE</small>
+              </button>
+            </div>
+            <div class="menu-actions">
+              <button id="logoutBtn" class="secondary-btn">↪ SAIR</button>
+              <button id="installMenuBtn" class="secondary-btn">⬇ INSTALAR</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="databaseView" class="view hidden">
+        <div class="window">
+          <div class="titlebar">GUIA_CONDUTAS.DAT <span>[_] [□] [X]</span></div>
+          <div class="window-body">
+            <div class="section-head">
+              <div><h2>BASE CIENTÍFICA</h2><span>CONSULTA LOCAL / SEM INTERNET</span></div>
+              <button id="backMenuFromDb" class="secondary-btn">← MENU</button>
+            </div>
+            <label for="dbSearch">PESQUISAR PATOLOGIA / REGIÃO / SINTOMA</label>
+            <input id="dbSearch" class="terminal-input" type="search" placeholder="Ex.: lombalgia, parestesia, pé...">
+            <div id="recentSearches" class="recent-box"></div>
+            <div id="dbResults" class="results-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="patientsView" class="view hidden">
+        <div class="window">
+          <div class="titlebar">PACIENTES.EXE <span>[_] [□] [X]</span></div>
+          <div class="window-body">
+            <div class="section-head">
+              <div><h2>GERENCIADOR DE PACIENTES</h2><span>REGISTRO LOCAL / USUÁRIO ISOLADO</span></div>
+              <button id="backMenuFromPatients" class="secondary-btn">← MENU</button>
+            </div>
+            <div class="patient-toolbar">
+              <input id="patientSearch" class="terminal-input" type="search" placeholder="Pesquisar paciente...">
+              <button id="newPatientBtn" class="action-btn">+ NOVO PACIENTE</button>
+            </div>
+            <div id="patientList" class="patient-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="patientEditorView" class="view hidden">
+        <div class="window">
+          <div class="titlebar">PRESCRICAO.EXE <span>[_] [□] [X]</span></div>
+          <div class="window-body">
+            <div class="section-head">
+              <div><h2 id="editorTitle">NOVO PACIENTE</h2><span>CRUZAMENTO CLÍNICO LOCAL</span></div>
+              <button id="backPatients" class="secondary-btn">← PACIENTES</button>
+            </div>
+
+            <form id="patientForm" novalidate>
+              <input id="patientId" type="hidden">
+              <div class="form-grid three">
+                <div class="field"><label for="patientName">NOME *</label><input id="patientName" class="terminal-input" required></div>
+                <div class="field"><label for="patientAge">IDADE *</label><input id="patientAge" class="terminal-input" type="number" min="0" max="120" required></div>
+                <div class="field"><label for="patientNotes">OBSERVAÇÕES</label><input id="patientNotes" class="terminal-input"></div>
+              </div>
+
+              <div class="panel-block">
+                <div class="panel-title">QUEIXA_PRINCIPAL.DAT</div>
+                <label for="pathologyInput">DIGITE E SELECIONE UMA PATOLOGIA DA BASE *</label>
+                <input id="pathologyInput" class="terminal-input" autocomplete="off" placeholder="Ex.: Lombalgia">
+                <input id="pathologyIndex" type="hidden">
+                <div id="pathologySuggestions" class="autocomplete"></div>
+                <div id="selectedPathology" class="selected-pathology">Nenhuma patologia selecionada.</div>
+              </div>
+
+              <div class="form-grid two">
+                <div class="panel-block">
+                  <div class="panel-title">FATORES_RISCO.DAT</div>
+                  <div id="riskChecks" class="checks-grid"></div>
+                </div>
+                <div class="panel-block">
+                  <div class="panel-title">SINTOMAS_ATUAIS.DAT</div>
+                  <div id="symptomChecks" class="checks-grid"></div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button id="savePatientBtn" class="action-btn huge" type="submit">💾 SALVAR E GERAR SUGESTÃO</button>
+              </div>
+            </form>
+
+            <div id="prescriptionResult" class="prescription-result hidden"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>🧛 FISIO90S // LOCAL MODE // IndexedDB</span>
+      <strong>Este aplicativo é um guia de consulta rápida baseado em evidências e não substitui a avaliação profissional.</strong>
+      <span>🐾 🩺 🧛</span>
+    </footer>
+  </div>
+
+  <script src="database.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,16 +1,16 @@
 {
-  "name":"Fisio+ — Guia e Pacientes",
-  "short_name":"Fisio+",
-  "description":"Guia científico e gerenciador local de pacientes para fisioterapia.",
-  "lang":"pt-BR",
-  "start_url":"./index.html",
-  "scope":"./",
-  "display":"standalone",
-  "orientation":"portrait-primary",
-  "background_color":"#f1edf7",
-  "theme_color":"#6e43a6",
-  "icons":[
-    {"src":"logo-placeholder.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"logo-placeholder.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  "name": "Fisio90s ¬ Fisioterapia Offline",
+  "short_name": "Fisio90s",
+  "description": "Guia científico e gerenciador local de pacientes para fisioterapia.",
+  "lang": "pt-BR",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#d6c9e8",
+  "theme_color": "#4b168a",
+  "icons": [
+    { "src": "logo-placeholder.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "logo-placeholder.png", "sizes": "512x512", "type": "image/png" }
   ]
 }

@@ -1,287 +1,318 @@
-/* Fisio+ — Base científica estática e educacional.
-   Estrutura: nome_patologia, regiao_corpo, palavras_chave, sintomas,
-   testes_ortopedicos_neurologicos, conduta_terapeutica,
-   exercicios_especificos, referencias_cientificas.
-*/
-const SCIENTIFIC_DATABASE = [
+/* Fisio90s - Base científica estática para consulta educacional.
+   As condutas são referências de apoio e não substituem avaliação clínica. */
+const DATABASE = [
   {
-    nome_patologia:'Síndrome do Túnel do Carpo', regiao_corpo:'Punho e Mão',
-    palavras_chave:['túnel do carpo','carpal tunnel','compressão mediana','formigamento mão','parestesia','mão dormente'],
-    sintomas:['parestesia','dor','fraqueza muscular','alteração de sensibilidade'],
-    testes_ortopedicos_neurologicos:['Phalen','Tinel no túnel do carpo','Durkan/compressão do carpo','avaliação de sensibilidade e força de preensão'],
-    conduta_terapeutica:['Educação sobre carga e posições sustentadas do punho.','Exercícios de deslizamento neural/tendíneo quando indicados.','Fortalecimento progressivo da mão e antebraço conforme irritabilidade.','Órtese noturna em posição neutra pode ser considerada em casos apropriados.'],
-    exercicios_especificos:[
-      {nome:'Deslizamento dos tendões da mão',descricao:'Sequência controlada entre mão aberta, gancho, punho fechado e posição de mesa, sem provocar piora persistente dos sintomas.'},
-      {nome:'Deslizamento neural do nervo mediano',descricao:'Movimentos graduais de ombro, cotovelo, antebraço e punho para mobilidade neural, com amplitude tolerada.'},
-      {nome:'Fortalecimento de preensão com massa terapêutica',descricao:'Compressão progressiva de material elástico macio, respeitando dor e fadiga.'}
+    nome_patologia: "Síndrome do Túnel do Carpo",
+    regiao_corpo: "Punho e Mão",
+    palavras_chave: ["túnel do carpo", "tunel do carpo", "parestesia", "formigamento", "mão dormente", "nervo mediano"],
+    sintomas: ["parestesia", "dor neuropática", "fraqueza muscular", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["Phalen", "Tinel no túnel do carpo", "Durkan/compressão do carpo", "avaliação de sensibilidade do território mediano"],
+    conduta_terapeutica: "Educação, modificação de atividades, manejo de carga, exercícios de mobilidade neural e tendínea e fortalecimento progressivo conforme irritabilidade e avaliação clínica.",
+    exercicios_especificos: [
+      { nome: "Deslizamento do nervo mediano", descricao: "Sequência suave de deslizamento neural do membro superior, sem provocar aumento sustentado dos sintomas." },
+      { nome: "Deslizamento dos tendões flexores", descricao: "Sequência de posições de mão aberta, gancho, punho fechado e mesa para favorecer excursão tendínea." },
+      { nome: "Abdução do polegar com resistência leve", descricao: "Fortalecimento progressivo da musculatura tenar com elástico ou resistência manual leve." }
     ],
-    referencias_cientificas:['American Academy of Orthopaedic Surgeons. Management of Carpal Tunnel Syndrome CPG.','Page MJ et al. Exercise and mobilisation interventions for carpal tunnel syndrome. Cochrane Database Syst Rev.']
+    referencias_cientificas: ["AAOS. Management of Carpal Tunnel Syndrome. Clinical Practice Guideline.", "Page MJ et al. Exercise and mobilization interventions for carpal tunnel syndrome. Cochrane Database of Systematic Reviews."]
   },
   {
-    nome_patologia:'Tenossinovite de De Quervain', regiao_corpo:'Punho e Mão',
-    palavras_chave:['de quervain','tenossinovite','primeiro compartimento dorsal','dor polegar','dor radial punho'],
-    sintomas:['dor','edema','perda de mobilidade','fraqueza muscular'],
-    testes_ortopedicos_neurologicos:['Finkelstein','Eichhoff','WHAT test','palpação do primeiro compartimento dorsal'],
-    conduta_terapeutica:['Educação e modificação temporária de atividades provocativas.','Controle de dor e edema quando necessários.','Órtese polegar-punho pode ser utilizada conforme avaliação.','Progressão para mobilidade e fortalecimento dos músculos do polegar e punho.'],
-    exercicios_especificos:[
-      {nome:'Abdução ativa do polegar',descricao:'Elevar o polegar no plano da palma com movimento lento e amplitude confortável.'},
-      {nome:'Oposição do polegar',descricao:'Levar o polegar em direção às polpas digitais, controlando o retorno sem compensações.'},
-      {nome:'Isometria de extensão do polegar',descricao:'Resistir suavemente ao movimento de extensão do polegar sem provocar aumento relevante da dor.'}
+    nome_patologia: "Tenossinovite de De Quervain",
+    regiao_corpo: "Punho e Mão",
+    palavras_chave: ["de quervain", "tenossinovite", "polegar", "dor radial", "punho radial"],
+    sintomas: ["dor articular", "perda de mobilidade", "fraqueza muscular"],
+    testes_ortopedicos_neurologicos: ["Finkelstein", "Eichhoff", "WHAT test", "palpação do primeiro compartimento extensor"],
+    conduta_terapeutica: "Educação, redução temporária de atividades provocativas, controle de carga, mobilidade graduada e fortalecimento progressivo do polegar e punho conforme tolerância.",
+    exercicios_especificos: [
+      { nome: "Abdução ativa do polegar", descricao: "Levar o polegar para fora da palma em amplitude confortável, com retorno controlado." },
+      { nome: "Oposição do polegar", descricao: "Tocar sequencialmente a polpa do polegar nas pontas dos dedos, sem aumentar a dor." },
+      { nome: "Extensão do polegar com elástico leve", descricao: "Resistência leve à extensão do polegar, priorizando movimento lento e controle." }
     ],
-    referencias_cientificas:['Ilyas AM et al. De Quervain tenosynovitis: a review of the rehabilitative options. J Hand Surg.','American Society for Surgery of the Hand. De Quervain tenosynovitis.']
+    referencias_cientificas: ["Ilyas AM et al. De Quervain tenosynovitis. Journal of Hand Surgery.", "AAOS. Tendinitis of the Wrist and Hand."]
   },
   {
-    nome_patologia:'Osteoartrite da Mão', regiao_corpo:'Punho e Mão',
-    palavras_chave:['artrose mão','osteoartrite mão','rizartrose','artrose polegar','rigidez dedos'],
-    sintomas:['dor articular','rigidez matinal','perda de mobilidade','fraqueza muscular','crepitação articular'],
-    testes_ortopedicos_neurologicos:['grind test da CMC do polegar','avaliação de amplitude digital','força de preensão e pinça','inspeção de deformidades'],
-    conduta_terapeutica:['Educação e conservação articular.','Exercícios de mobilidade e fortalecimento individualizados.','Treino funcional da mão e estratégias para tarefas domésticas/profissionais.','Órtese pode ser considerada em articulações sintomáticas específicas.'],
-    exercicios_especificos:[
-      {nome:'Oposição polegar-dedo',descricao:'Percorrer sequencialmente as polpas dos dedos mantendo movimento confortável do polegar.'},
-      {nome:'Extensão dos dedos sobre mesa',descricao:'Apoiar a mão e elevar cada dedo ou o conjunto dos dedos com controle.'},
-      {nome:'Preensão com massa terapêutica',descricao:'Apertar e modelar massa macia para fortalecer preensão sem sobrecarga articular.'}
+    nome_patologia: "Osteoartrite da Mão",
+    regiao_corpo: "Punho e Mão",
+    palavras_chave: ["artrose da mão", "osteoartrite mão", "rigidez dedos", "rizartrose", "polegar"],
+    sintomas: ["dor articular", "rigidez matinal", "crepitação articular", "fraqueza muscular", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["avaliação de amplitude", "teste de compressão da CMC do polegar", "força de preensão e pinça", "avaliação funcional da mão"],
+    conduta_terapeutica: "Educação, conservação articular, exercícios de amplitude, fortalecimento de preensão/pinça e adaptação de atividades conforme dor e função.",
+    exercicios_especificos: [
+      { nome: "Deslizamento dos dedos", descricao: "Flexão e extensão progressiva dos dedos, percorrendo posições de mão aberta, gancho e punho." },
+      { nome: "Pinça polegar-indicador", descricao: "Pinça suave entre polegar e indicador com objeto macio, progredindo a resistência conforme tolerância." },
+      { nome: "Fortalecimento de preensão com massa terapêutica", descricao: "Compressão controlada de massa terapêutica, evitando excesso de dor após o exercício." }
     ],
-    referencias_cientificas:['Kloppenburg M et al. 2019 update of the EULAR recommendations for hand osteoarthritis. Ann Rheum Dis.','EULAR recommendations for hand osteoarthritis management.']
+    referencias_cientificas: ["Kloppenburg M et al. 2018 update of the EULAR recommendations for hand osteoarthritis.", "American College of Rheumatology/Arthritis Foundation. Osteoarthritis guideline."]
   },
   {
-    nome_patologia:'Fascite Plantar', regiao_corpo:'Tornozelo e Pé',
-    palavras_chave:['fasciíte plantar','dor plantar','dor no calcanhar','heel pain','fáscia plantar'],
-    sintomas:['dor','rigidez matinal','perda de mobilidade'],
-    testes_ortopedicos_neurologicos:['palpação do tubérculo medial do calcâneo','Windlass test','avaliação de dorsiflexão','avaliação de força da panturrilha'],
-    conduta_terapeutica:['Educação sobre carga e manejo da dor.','Alongamento específico da fáscia plantar e panturrilha.','Fortalecimento progressivo do tríceps sural e musculatura intrínseca do pé.','Avaliação de calçados e fatores de carga quando pertinente.'],
-    exercicios_especificos:[
-      {nome:'Alongamento específico da fáscia plantar',descricao:'Em sedestação, tracionar suavemente os dedos do pé em direção à extensão, associando mobilidade do tornozelo conforme tolerância.'},
-      {nome:'Elevação de panturrilha em pé',descricao:'Elevar os calcanhares e retornar lentamente, progredindo de bilateral para unilateral conforme capacidade.'},
-      {nome:'Short foot',descricao:'Ativar a musculatura intrínseca aproximando suavemente a cabeça do primeiro metatarso do calcâneo sem enrolar os dedos.'}
+    nome_patologia: "Fascite Plantar",
+    regiao_corpo: "Tornozelo e Pé",
+    palavras_chave: ["fascite plantar", "dor no calcanhar", "dor plantar", "dor matinal", "fáscia plantar"],
+    sintomas: ["dor articular", "rigidez matinal", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["palpação do tubérculo medial do calcâneo", "windlass test", "avaliação de dorsiflexão", "avaliação funcional da marcha"],
+    conduta_terapeutica: "Educação, manejo de carga, alongamento específico, fortalecimento progressivo da panturrilha e musculatura intrínseca do pé e estratégias para retorno gradual à atividade.",
+    exercicios_especificos: [
+      { nome: "Alongamento da fáscia plantar", descricao: "Alongamento manual dos dedos e arco plantar em posição confortável, especialmente antes dos primeiros passos." },
+      { nome: "Alongamento de gastrocnêmio e sóleo", descricao: "Alongamentos em apoio, com joelho estendido e flexionado, respeitando tolerância." },
+      { nome: "Elevação de panturrilha", descricao: "Elevação bilateral e posteriormente unilateral do calcanhar, com progressão de carga." },
+      { nome: "Short foot", descricao: "Aproximar suavemente a cabeça do primeiro metatarso do calcâneo sem enrolar os dedos, treinando controle do arco." }
     ],
-    referencias_cientificas:['Martin RL et al. Heel Pain—Plantar Fasciitis: Revision 2023. J Orthop Sports Phys Ther.','American Physical Therapy Association. Clinical Practice Guideline: Heel Pain—Plantar Fasciitis.']
+    referencias_cientificas: ["Martin RL et al. Heel Pain—Plantar Fasciitis: Revision 2023. JOSPT.", "American Physical Therapy Association. Clinical Practice Guideline: Heel Pain—Plantar Fasciitis."]
   },
   {
-    nome_patologia:'Entorse Lateral de Tornozelo', regiao_corpo:'Tornozelo e Pé',
-    palavras_chave:['entorse tornozelo','torção tornozelo','ligamento talofibular anterior','instabilidade tornozelo','inversão'],
-    sintomas:['dor','edema','fraqueza muscular','desequilíbrio','instabilidade','perda de mobilidade'],
-    testes_ortopedicos_neurologicos:['teste da gaveta anterior','talar tilt','squeeze test quando indicado','teste de equilíbrio unipodal'],
-    conduta_terapeutica:['Educação e proteção relativa conforme gravidade.','Recuperação progressiva de amplitude e carga.','Fortalecimento de fibulares e tríceps sural.','Treino proprioceptivo, equilíbrio e tarefas específicas.','Retorno gradual às atividades.'],
-    exercicios_especificos:[
-      {nome:'Dorsiflexão na parede',descricao:'Levar o joelho à frente mantendo o calcanhar apoiado para recuperar mobilidade do tornozelo.'},
-      {nome:'Eversão com faixa elástica',descricao:'Resistir à eversão do pé em amplitude controlada para fortalecer os fibulares.'},
-      {nome:'Equilíbrio unipodal',descricao:'Manter apoio em uma perna, inicialmente com superfície estável e apoio próximo para segurança.'},
-      {nome:'Elevação de panturrilha',descricao:'Subir e descer o calcanhar controladamente para recuperar força e capacidade de carga.'}
+    nome_patologia: "Entorse Lateral de Tornozelo",
+    regiao_corpo: "Tornozelo e Pé",
+    palavras_chave: ["entorse tornozelo", "entorse lateral", "ligamento talofibular", "inversão", "tornozelo inchado"],
+    sintomas: ["dor articular", "edema", "perda de mobilidade", "fraqueza muscular", "desequilíbrio/insegurança ao andar"],
+    testes_ortopedicos_neurologicos: ["gaveta anterior", "talar tilt", "Ottawa Ankle Rules", "teste de equilíbrio unipodal"],
+    conduta_terapeutica: "Controle de sintomas e carga na fase inicial, recuperação de amplitude, fortalecimento de eversores e panturrilha, treino proprioceptivo e retorno progressivo às atividades.",
+    exercicios_especificos: [
+      { nome: "Mobilidade de dorsiflexão na parede", descricao: "Avançar o joelho em direção à parede mantendo o calcanhar apoiado, sem compensação excessiva." },
+      { nome: "Eversão com faixa elástica", descricao: "Fortalecimento dos eversores com resistência leve a moderada e retorno lento." },
+      { nome: "Elevação de panturrilha", descricao: "Subir e descer o calcanhar com apoio, progredindo para apoio unipodal." },
+      { nome: "Equilíbrio unipodal", descricao: "Manter apoio em uma perna e progredir superfície, alcance e tarefas conforme segurança." }
     ],
-    referencias_cientificas:['Martin RL et al. Ankle Stability and Movement Coordination Impairments: Revision 2021. J Orthop Sports Phys Ther.','PAASS framework for return to sport after acute lateral ankle sprain. Br J Sports Med.']
+    referencias_cientificas: ["Martin RL et al. Ankle Stability and Movement Coordination Impairments: CPG. JOSPT.", "Dubois B, Esculier JF. Soft-tissue injuries simply explained. BJSM."]
   },
   {
-    nome_patologia:'Esporão do Calcâneo / Dor do Calcâneo', regiao_corpo:'Tornozelo e Pé',
-    palavras_chave:['esporão calcâneo','esporão do calcanhar','dor calcâneo','heel spur','dor calcanhar'],
-    sintomas:['dor','rigidez matinal','perda de mobilidade'],
-    testes_ortopedicos_neurologicos:['palpação do calcâneo','Windlass','avaliação de dorsiflexão','avaliação da cadeia posterior e carga do pé'],
-    conduta_terapeutica:['Tratar o quadro doloroso e funcional, não apenas o achado radiográfico.','Progressão de carga da panturrilha e pé.','Mobilidade de tornozelo quando limitada.','Educação sobre carga, calçado e fatores mecânicos individuais.'],
-    exercicios_especificos:[
-      {nome:'Alongamento de gastrocnêmio na parede',descricao:'Manter joelho estendido e calcanhar apoiado, progredindo a amplitude conforme tolerância.'},
-      {nome:'Alongamento de sóleo',descricao:'Realizar avanço com joelho flexionado mantendo o calcanhar apoiado.'},
-      {nome:'Elevação de panturrilha',descricao:'Fortalecer progressivamente o tríceps sural com controle da descida.'}
+    nome_patologia: "Tendinopatia de Aquiles",
+    regiao_corpo: "Tornozelo e Pé",
+    palavras_chave: ["aquiles", "tendão de aquiles", "tendinopatia aquiles", "dor posterior tornozelo", "panturrilha"],
+    sintomas: ["dor articular", "rigidez matinal", "fraqueza muscular", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["Royal London Hospital test", "painful arc", "Thompson para suspeita de ruptura", "elevação de panturrilha"],
+    conduta_terapeutica: "Educação e gerenciamento de carga, fortalecimento progressivo do complexo tríceps sural e retorno gradual à atividade específica.",
+    exercicios_especificos: [
+      { nome: "Elevação de panturrilha bilateral", descricao: "Elevação do calcanhar com carga progressiva e controle do movimento." },
+      { nome: "Elevação de panturrilha unilateral", descricao: "Progressão para apoio unipodal conforme capacidade e sintomas." },
+      { nome: "Panturrilha com joelho flexionado", descricao: "Fortalecimento com joelho levemente flexionado para aumentar participação do sóleo." }
     ],
-    referencias_cientificas:['Martin RL et al. Heel Pain—Plantar Fasciitis: Revision 2023. J Orthop Sports Phys Ther.','Buchbinder R. Plantar fasciitis. N Engl J Med.']
+    referencias_cientificas: ["Martin RL et al. Achilles Pain, Stiffness, and Muscle Power Deficits: CPG. JOSPT.", "Silbernagel KG et al. Rehabilitation for Achilles tendinopathy."]
   },
   {
-    nome_patologia:'Síndrome Dolorosa Subacromial / Dor Relacionada ao Manguito Rotador', regiao_corpo:'Ombro e Cotovelo',
-    palavras_chave:['síndrome do impacto','dor subacromial','manguito rotador','dor ombro','impingement'],
-    sintomas:['dor','fraqueza muscular','perda de mobilidade'],
-    testes_ortopedicos_neurologicos:['arco doloroso','Hawkins-Kennedy','Neer','teste de força do manguito e escápula'],
-    conduta_terapeutica:['Educação e modificação de carga.','Exercícios progressivos para manguito rotador e musculatura escapular.','Recuperação de mobilidade quando necessária.','Progressão para tarefas funcionais acima da cabeça conforme tolerância.'],
-    exercicios_especificos:[
-      {nome:'Rotação externa com faixa elástica',descricao:'Manter cotovelo junto ao tronco e realizar rotação externa contra resistência leve.'},
-      {nome:'Remada com faixa',descricao:'Puxar a faixa aproximando as escápulas sem elevar excessivamente os ombros.'},
-      {nome:'Elevação no plano da escápula',descricao:'Elevar o braço em plano escapular com carga leve e movimento controlado.'}
+    nome_patologia: "Síndrome Dolorosa Subacromial",
+    regiao_corpo: "Ombro e Cotovelo",
+    palavras_chave: ["síndrome do impacto", "impacto subacromial", "dor no ombro", "arco doloroso", "manguito rotador"],
+    sintomas: ["dor articular", "fraqueza muscular", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["painful arc", "Hawkins-Kennedy", "Neer", "teste de força do manguito"],
+    conduta_terapeutica: "Educação, modificação temporária de carga, exercícios progressivos para manguito rotador e cintura escapular e recuperação funcional específica.",
+    exercicios_especificos: [
+      { nome: "Rotação externa com faixa", descricao: "Rotação externa do ombro com cotovelo junto ao tronco, progredindo resistência." },
+      { nome: "Remada baixa com elástico", descricao: "Retração e depressão escapular coordenadas com flexão do cotovelo." },
+      { nome: "Elevação no plano da escápula", descricao: "Elevação dos braços no plano escapular com carga leve e amplitude tolerada." }
     ],
-    referencias_cientificas:['Littlewood C et al. Exercise treatment for rotator cuff tendinopathy. Cochrane Database Syst Rev.','JOSPT. Rotator Cuff Tendinopathy Clinical Practice Guideline.']
+    referencias_cientificas: ["Cools AM et al. Rehabilitation of scapular dyskinesis. BJSM.", "American Academy of Orthopaedic Surgeons. Rotator Cuff and Shoulder Conditioning."]
   },
   {
-    nome_patologia:'Epicondilalgia Lateral', regiao_corpo:'Ombro e Cotovelo',
-    palavras_chave:['epicondilite lateral','cotovelo de tenista','tennis elbow','dor lateral cotovelo','extensores punho'],
-    sintomas:['dor','fraqueza muscular'],
-    testes_ortopedicos_neurologicos:['Cozen','Mill','Maudsley','teste de força de extensão do punho e preensão'],
-    conduta_terapeutica:['Educação sobre gerenciamento de carga.','Fortalecimento progressivo dos extensores do punho.','Treino de preensão e função.','Reintrodução gradual das atividades provocativas.'],
-    exercicios_especificos:[
-      {nome:'Extensão de punho excêntrica',descricao:'Ajudar a subida com a outra mão e controlar lentamente a descida com o punho afetado.'},
-      {nome:'Extensão de punho com faixa',descricao:'Realizar extensão contra resistência leve, progredindo conforme tolerância.'},
-      {nome:'Preensão com bola macia',descricao:'Apertar uma bola macia com controle, ajustando volume à irritabilidade.'}
+    nome_patologia: "Epicondilalgia Lateral",
+    regiao_corpo: "Ombro e Cotovelo",
+    palavras_chave: ["epicondilite", "epicondilalgia", "cotovelo de tenista", "dor lateral cotovelo", "extensores punho"],
+    sintomas: ["dor articular", "fraqueza muscular"],
+    testes_ortopedicos_neurologicos: ["Cozen", "Mill", "Maudsley", "força de preensão"],
+    conduta_terapeutica: "Educação e ajuste de carga, fortalecimento progressivo dos extensores do punho e recuperação gradual de tarefas funcionais.",
+    exercicios_especificos: [
+      { nome: "Extensão de punho excêntrica", descricao: "Ajudar a subir o punho e controlar lentamente a descida contra resistência." },
+      { nome: "Pronação e supinação com martelo leve", descricao: "Rotação do antebraço com alavanca leve, ajustando amplitude e carga." },
+      { nome: "Preensão isométrica", descricao: "Compressão de objeto macio por tempo curto, progredindo conforme tolerância." }
     ],
-    referencias_cientificas:['Lucado AM et al. Lateral Elbow Pain and Muscle Function: CPG. J Orthop Sports Phys Ther.','Coombes BK et al. Management of lateral elbow tendinopathy. Lancet.']
+    referencias_cientificas: ["Bisset L et al. Mobilisation with movement and exercise for lateral epicondylalgia.", "JOSPT. Lateral Elbow Pain and Muscle Function CPG."]
   },
   {
-    nome_patologia:'Síndrome do Túnel Cubital', regiao_corpo:'Ombro e Cotovelo',
-    palavras_chave:['túnel cubital','neuropatia ulnar','nervo ulnar','parestesia quarto quinto dedos','cotovelo ulnar'],
-    sintomas:['parestesia','dor','fraqueza muscular','alteração de sensibilidade'],
-    testes_ortopedicos_neurologicos:['Tinel no túnel cubital','flexão sustentada do cotovelo','avaliação sensitiva ulnar','força intrínseca da mão'],
-    conduta_terapeutica:['Educação para reduzir compressão e flexão prolongada do cotovelo.','Mobilidade neural quando indicada.','Fortalecimento funcional progressivo após redução da irritabilidade.','Encaminhamento para avaliação médica quando houver déficit motor progressivo.'],
-    exercicios_especificos:[
-      {nome:'Deslizamento neural do nervo ulnar',descricao:'Sequência suave de posicionamentos do membro superior visando mobilidade neural sem reproduzir sintomas persistentes.'},
-      {nome:'Abdução dos dedos contra elástico leve',descricao:'Abrir os dedos contra pequena resistência para trabalhar musculatura intrínseca da mão.'},
-      {nome:'Oposição e pinça funcional',descricao:'Treinar movimentos de pinça com baixa resistência e controle.'}
+    nome_patologia: "Síndrome do Túnel Cubital",
+    regiao_corpo: "Ombro e Cotovelo",
+    palavras_chave: ["túnel cubital", "tunel cubital", "nervo ulnar", "formigamento quinto dedo", "parestesia ulnar"],
+    sintomas: ["parestesia", "dor neuropática", "fraqueza muscular"],
+    testes_ortopedicos_neurologicos: ["Tinel no túnel cubital", "flexão sustentada do cotovelo", "avaliação sensitiva ulnar", "teste de força intrínseca da mão"],
+    conduta_terapeutica: "Educação para evitar compressão e flexão prolongada do cotovelo, mobilidade neural suave e fortalecimento quando indicado após avaliação.",
+    exercicios_especificos: [
+      { nome: "Deslizamento do nervo ulnar", descricao: "Deslizamento neural suave sem manter a posição provocativa ou aumentar sintomas residuais." },
+      { nome: "Abertura e fechamento dos dedos", descricao: "Movimentos ativos dos dedos para manutenção da mobilidade e controle da mão." }
     ],
-    referencias_cientificas:['American Academy of Orthopaedic Surgeons. Management of Cubital Tunnel Syndrome.','Camp CL et al. Ulnar neuropathy at the elbow: diagnosis and treatment review.']
+    referencias_cientificas: ["AAOS. Cubital Tunnel Syndrome.", "Cutts S. Cubital tunnel syndrome. Postgraduate Medical Journal."]
   },
   {
-    nome_patologia:'Cervicalgia Mecânica', regiao_corpo:'Coluna',
-    palavras_chave:['dor cervical','cervicalgia','pescoço','rigidez cervical','dor nuca'],
-    sintomas:['dor','rigidez matinal','perda de mobilidade','espasmo muscular'],
-    testes_ortopedicos_neurologicos:['avaliação de amplitude cervical','Spurling quando indicado','teste de distração','exame neurológico de membros superiores'],
-    conduta_terapeutica:['Educação e manutenção de atividade conforme tolerância.','Exercícios de mobilidade cervical e torácica.','Fortalecimento de flexores cervicais profundos e cintura escapular.','Terapia manual pode ser recurso complementar quando indicada.'],
-    exercicios_especificos:[
-      {nome:'Chin tuck / flexão cervical profunda',descricao:'Realizar retração suave do queixo sem inclinar a cabeça, mantendo contração leve.'},
-      {nome:'Rotação cervical ativa',descricao:'Girar a cabeça lentamente para os lados dentro da amplitude confortável.'},
-      {nome:'Remada com faixa',descricao:'Fortalecer musculatura escapular para melhorar capacidade funcional do complexo cervicotorácico.'}
+    nome_patologia: "Cervicalgia Mecânica",
+    regiao_corpo: "Coluna",
+    palavras_chave: ["cervicalgia", "dor cervical", "pescoço", "cervical", "tensão cervical"],
+    sintomas: ["dor articular", "rigidez matinal", "espasmo muscular", "perda de mobilidade", "dor irradiada"],
+    testes_ortopedicos_neurologicos: ["Spurling quando indicado", "distração cervical", "avaliação neurológica de membros superiores", "amplitude cervical"],
+    conduta_terapeutica: "Educação, manutenção de atividade, exercícios cervicais e torácicos, fortalecimento dos flexores cervicais profundos e cintura escapular conforme apresentação.",
+    exercicios_especificos: [
+      { nome: "Chin tuck", descricao: "Retração suave do queixo sem flexionar excessivamente a cabeça, treinando controle cervical." },
+      { nome: "Rotação cervical ativa", descricao: "Giros lentos da cabeça em amplitude confortável, sem forçar a dor." },
+      { nome: "Remada com elástico", descricao: "Fortalecimento da musculatura escapular com foco em controle postural." }
     ],
-    referencias_cientificas:['Blanpied PR et al. Neck Pain: Revision 2017 Clinical Practice Guidelines. J Orthop Sports Phys Ther.','Côté P et al. The Global Burden of Neck Pain.']
+    referencias_cientificas: ["Blanpied PR et al. Neck Pain: Revision 2017 CPG. JOSPT.", "Côté P et al. Management of neck pain and associated disorders."]
   },
   {
-    nome_patologia:'Lombalgia Mecânica / Inespecífica', regiao_corpo:'Coluna',
-    palavras_chave:['lombalgia','dor lombar','dor nas costas','lombalgia mecânica','low back pain'],
-    sintomas:['dor','rigidez matinal','espasmo muscular','perda de mobilidade'],
-    testes_ortopedicos_neurologicos:['avaliação funcional e de movimento','teste de elevação da perna estendida quando indicado','exame neurológico','avaliação de força e mobilidade de quadril'],
-    conduta_terapeutica:['Educação e manutenção de atividades na medida do possível.','Exercício terapêutico individualizado.','Fortalecimento de tronco e membros inferiores.','Treino de controle motor e retorno gradual às tarefas.'],
-    exercicios_especificos:[
-      {nome:'Ponte pélvica',descricao:'Elevar a pelve em decúbito dorsal ativando extensores de quadril e tronco sem compensação excessiva.'},
-      {nome:'Bird dog',descricao:'Em quatro apoios, estender braço e perna opostos mantendo tronco estável.'},
-      {nome:'Agachamento para cadeira',descricao:'Sentar e levantar de uma cadeira com controle do tronco e dos joelhos.'},
-      {nome:'Mobilidade gato-camelo',descricao:'Alternar flexão e extensão suaves da coluna em quatro apoios conforme tolerância.'}
+    nome_patologia: "Lombalgia Mecânica",
+    regiao_corpo: "Coluna",
+    palavras_chave: ["lombalgia", "dor lombar", "dor nas costas", "lombar", "dor mecânica"],
+    sintomas: ["dor articular", "rigidez matinal", "espasmo muscular", "perda de mobilidade", "dor irradiada"],
+    testes_ortopedicos_neurologicos: ["Lasègue quando indicado", "Slump quando indicado", "avaliação neurológica de membros inferiores", "movimentos repetidos e resposta dos sintomas"],
+    conduta_terapeutica: "Educação, manutenção de atividade, exercício terapêutico individualizado, fortalecimento de tronco e quadril e progressão funcional conforme resposta.",
+    exercicios_especificos: [
+      { nome: "Ponte pélvica", descricao: "Elevar a pelve a partir da posição deitada, priorizando controle do tronco e quadril." },
+      { nome: "Bird-dog", descricao: "Extensão alternada de braço e perna em quatro apoios, mantendo estabilidade do tronco." },
+      { nome: "Dead bug", descricao: "Movimento alternado de membros superiores e inferiores em decúbito dorsal, mantendo controle abdominal." },
+      { nome: "Mobilidade gato-camelo", descricao: "Alternância controlada entre flexão e extensão da coluna em quatro apoios." }
     ],
-    referencias_cientificas:['George SZ et al. Interventions for the Management of Acute and Chronic Low Back Pain. J Orthop Sports Phys Ther.','World Health Organization. WHO guideline for non-surgical management of chronic primary low back pain in adults. 2023.']
+    referencias_cientificas: ["George SZ et al. Interventions for the Management of Acute and Chronic Low Back Pain. JOSPT.", "WHO. WHO guideline for non-surgical management of chronic primary low back pain."]
   },
   {
-    nome_patologia:'Hérnia de Disco Lombar com Radiculopatia', regiao_corpo:'Coluna',
-    palavras_chave:['hérnia de disco','hérnia lombar','ciatalgia','radiculopatia lombar','dor irradiada','ciática'],
-    sintomas:['dor irradiada','parestesia','fraqueza muscular','dor neuropática'],
-    testes_ortopedicos_neurologicos:['Lasègue/SLR','Slump test','exame de força, reflexos e sensibilidade','avaliação de sinais de alerta'],
-    conduta_terapeutica:['Triagem neurológica e de sinais de alerta.','Educação e manejo de carga.','Movimentos/exercícios direcionais podem ser utilizados conforme resposta individual.','Fortalecimento e retorno funcional progressivos.','Déficit neurológico progressivo exige avaliação médica.'],
-    exercicios_especificos:[
-      {nome:'Extensão lombar em prono',descricao:'Apoiar-se nos antebraços ou realizar extensão progressiva conforme resposta sintomática individual.'},
-      {nome:'Ponte pélvica',descricao:'Fortalecer extensores de quadril e tronco com carga progressiva.'},
-      {nome:'Marcha controlada',descricao:'Caminhada em dose tolerada para manter capacidade funcional e condicionamento.'}
+    nome_patologia: "Hérnia de Disco Lombar com Radiculopatia",
+    regiao_corpo: "Coluna",
+    palavras_chave: ["hérnia de disco", "hernia de disco", "radiculopatia", "ciatalgia", "dor ciática", "irradiação"],
+    sintomas: ["dor irradiada", "parestesia", "dor neuropática", "fraqueza muscular"],
+    testes_ortopedicos_neurologicos: ["Lasègue/SLR", "Slump", "força segmentar", "reflexos", "sensibilidade dermatomérica"],
+    conduta_terapeutica: "Triagem neurológica e de sinais de alerta, educação, manejo de carga e exercício direcionado à apresentação clínica, com encaminhamento quando houver sinais de déficit progressivo ou urgência.",
+    exercicios_especificos: [
+      { nome: "Extensão lombar em prono", descricao: "Movimento de extensão progressiva somente quando compatível com a resposta individual dos sintomas." },
+      { nome: "Caminhada graduada", descricao: "Caminhada em períodos toleráveis com progressão gradual de duração." },
+      { nome: "Bird-dog", descricao: "Controle de tronco e quadril em quatro apoios, progredindo conforme irritabilidade e força." }
     ],
-    referencias_cientificas:['Delitto A et al. Interventions for the Management of Acute and Chronic Low Back Pain. J Orthop Sports Phys Ther.','NASS. Diagnosis and Treatment of Lumbar Disc Herniation with Radiculopathy.']
+    referencias_cientificas: ["JOSPT. Low Back Pain CPG.", "NASS. Evidence-Based Clinical Guidelines for Multidisciplinary Spine Care: Lumbar Disc Herniation with Radiculopathy."]
   },
   {
-    nome_patologia:'Osteoartrite de Joelho', regiao_corpo:'Joelho e Quadril',
-    palavras_chave:['artrose joelho','osteoartrite joelho','gonartrose','dor joelho','rigidez joelho'],
-    sintomas:['dor articular','rigidez matinal','crepitação articular','fraqueza muscular','perda de mobilidade'],
-    testes_ortopedicos_neurologicos:['avaliação de amplitude','teste de força de quadríceps e quadril','teste funcional sentar-levantar','avaliação de marcha'],
-    conduta_terapeutica:['Educação e exercício terapêutico como pilares do manejo.','Fortalecimento de quadríceps, glúteos e panturrilha.','Exercício aeróbico de baixo impacto conforme tolerância.','Treino funcional e controle de peso quando aplicável.'],
-    exercicios_especificos:[
-      {nome:'Extensão de joelho em cadeia aberta',descricao:'Estender o joelho contra resistência leve, com amplitude e carga individualizadas.'},
-      {nome:'Sentar e levantar da cadeira',descricao:'Treinar força funcional de quadríceps e quadril usando cadeira estável.'},
-      {nome:'Elevação de perna estendida',descricao:'Elevar a perna com joelho estendido mantendo contração do quadríceps.'},
-      {nome:'Caminhada ou bicicleta ergométrica',descricao:'Atividade aeróbica de baixo impacto ajustada à capacidade e aos sintomas.'}
+    nome_patologia: "Osteoartrite de Joelho",
+    regiao_corpo: "Joelho e Quadril",
+    palavras_chave: ["artrose joelho", "osteoartrite joelho", "gonartrose", "dor joelho", "rigidez joelho"],
+    sintomas: ["dor articular", "rigidez matinal", "crepitação articular", "fraqueza muscular", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["amplitude de movimento", "teste de força de quadríceps", "sit-to-stand", "avaliação funcional da marcha"],
+    conduta_terapeutica: "Educação, exercício terapêutico, fortalecimento de quadríceps e quadril, atividade aeróbica e manejo de peso quando aplicável.",
+    exercicios_especificos: [
+      { nome: "Sentar e levantar", descricao: "Transferência de sentado para em pé com altura de assento ajustada à capacidade." },
+      { nome: "Extensão de joelho", descricao: "Extensão ativa ou resistida do joelho dentro de amplitude tolerada." },
+      { nome: "Ponte pélvica", descricao: "Fortalecimento de extensores do quadril e controle do tronco." },
+      { nome: "Step-up baixo", descricao: "Subida em degrau baixo com controle do alinhamento do membro inferior." }
     ],
-    referencias_cientificas:['Bannuru RR et al. OARSI guidelines for non-surgical management of knee osteoarthritis. Osteoarthritis Cartilage.','Kolasinski SL et al. 2019 ACR/Arthritis Foundation Guideline for OA. Arthritis Care Res.']
+    referencias_cientificas: ["Kolasinski SL et al. 2019 ACR/AF Guideline for Osteoarthritis.", "Bannuru RR et al. OARSI guidelines for knee osteoarthritis."]
   },
   {
-    nome_patologia:'Síndrome da Dor Femoropatelar', regiao_corpo:'Joelho e Quadril',
-    palavras_chave:['condromalácia','dor femoropatelar','dor anterior joelho','patelofemoral','escada agachamento'],
-    sintomas:['dor articular','fraqueza muscular','perda de mobilidade','crepitação articular'],
-    testes_ortopedicos_neurologicos:['agachamento','step-down','avaliação de força de quadril e quadríceps','avaliação de movimento patelofemoral'],
-    conduta_terapeutica:['Educação sobre gerenciamento de carga.','Exercícios combinados de joelho e quadril.','Progressão de força e controle do membro inferior.','Retorno gradual a corrida, saltos ou tarefas específicas.'],
-    exercicios_especificos:[
-      {nome:'Agachamento para cadeira',descricao:'Executar agachamento com amplitude inicialmente confortável e alinhamento controlado do membro inferior.'},
-      {nome:'Abdução de quadril em decúbito lateral',descricao:'Elevar a perna mantendo quadril estável para fortalecer abdutores.'},
-      {nome:'Step-down baixo',descricao:'Descer de um degrau pequeno controlando alinhamento do joelho e quadril.'}
+    nome_patologia: "Dor Patelofemoral",
+    regiao_corpo: "Joelho e Quadril",
+    palavras_chave: ["condromalácia", "condromalacia", "dor patelofemoral", "dor anterior joelho", "patela"],
+    sintomas: ["dor articular", "fraqueza muscular", "crepitação articular", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["agachamento", "step-down", "avaliação de força de quadril", "teste funcional de corrida/salto quando indicado"],
+    conduta_terapeutica: "Educação, ajuste de carga, fortalecimento combinado de quadril e joelho e progressão funcional individualizada.",
+    exercicios_especificos: [
+      { nome: "Agachamento parcial", descricao: "Agachamento em amplitude tolerada, priorizando controle do joelho e quadril." },
+      { nome: "Abdução de quadril", descricao: "Fortalecimento dos abdutores em decúbito lateral ou em pé com resistência." },
+      { nome: "Step-down controlado", descricao: "Descida de degrau baixo com controle do alinhamento do membro inferior." }
     ],
-    referencias_cientificas:['Willy RW et al. Patellofemoral Pain Clinical Practice Guidelines. J Orthop Sports Phys Ther.','Crossley KM et al. 2016 Patellofemoral Pain Consensus Statement. Br J Sports Med.']
+    referencias_cientificas: ["Willy RW et al. Patellofemoral Pain Clinical Practice Guideline. JOSPT.", "Crossley KM et al. 2016 Patellofemoral pain consensus statement. BJSM."]
   },
   {
-    nome_patologia:'Osteoartrite de Quadril', regiao_corpo:'Joelho e Quadril',
-    palavras_chave:['artrose quadril','osteoartrite quadril','coxartrose','dor quadril','rigidez quadril'],
-    sintomas:['dor articular','rigidez matinal','perda de mobilidade','fraqueza muscular'],
-    testes_ortopedicos_neurologicos:['FABER','FADIR','amplitude de quadril','teste de força de abdutores e extensores'],
-    conduta_terapeutica:['Educação e exercício terapêutico.','Fortalecimento de glúteos, quadríceps e musculatura do tronco.','Mobilidade de quadril conforme necessidade.','Treino funcional e aeróbico de baixo impacto.'],
-    exercicios_especificos:[
-      {nome:'Ponte pélvica',descricao:'Fortalecer extensores de quadril com movimento controlado e progressão gradual.'},
-      {nome:'Abdução de quadril',descricao:'Elevar lateralmente a perna mantendo pelve estável.'},
-      {nome:'Sentar e levantar',descricao:'Treinar força funcional dos membros inferiores com cadeira estável.'}
+    nome_patologia: "Osteoartrite de Quadril",
+    regiao_corpo: "Joelho e Quadril",
+    palavras_chave: ["artrose quadril", "osteoartrite quadril", "coxartrose", "dor inguinal", "quadril rígido"],
+    sintomas: ["dor articular", "rigidez matinal", "fraqueza muscular", "perda de mobilidade", "fadiga muscular"],
+    testes_ortopedicos_neurologicos: ["FABER", "FADIR", "amplitude de quadril", "teste de força de abdutores e extensores"],
+    conduta_terapeutica: "Educação, exercício aeróbico e resistido, mobilidade conforme necessidade e adaptação de tarefas funcionais.",
+    exercicios_especificos: [
+      { nome: "Ponte pélvica", descricao: "Elevação da pelve com controle do quadril e tronco." },
+      { nome: "Abdução de quadril", descricao: "Movimento de afastamento da perna contra gravidade ou resistência progressiva." },
+      { nome: "Sit-to-stand", descricao: "Treino repetido de levantar e sentar com altura e apoio adaptados." }
     ],
-    referencias_cientificas:['Kolasinski SL et al. 2019 ACR/Arthritis Foundation Guideline for OA. Arthritis Care Res.','NICE. Osteoarthritis in over 16s: diagnosis and management.']
+    referencias_cientificas: ["Hochberg MC et al. 2012 ACR recommendations for hip and knee osteoarthritis.", "NICE. Osteoarthritis in over 16s: diagnosis and management."]
   },
   {
-    nome_patologia:'Acidente Vascular Cerebral — Reabilitação Crônica', regiao_corpo:'Neurologia',
-    palavras_chave:['AVC','acidente vascular cerebral','hemiparesia','hemiplegia','derrame','reabilitação neurológica'],
-    sintomas:['fraqueza muscular','alteração de sensibilidade','desequilíbrio','perda de mobilidade','fadiga muscular'],
-    testes_ortopedicos_neurologicos:['Fugl-Meyer Assessment','Timed Up and Go','Berg Balance Scale','avaliação de marcha, força, tônus e função do membro superior'],
-    conduta_terapeutica:['Treino orientado à tarefa e repetição de atividades funcionais.','Treino de marcha e equilíbrio.','Fortalecimento progressivo quando indicado.','Treino de membro superior e uso funcional.','Educação e manejo de fadiga.'],
-    exercicios_especificos:[
-      {nome:'Sentar e levantar',descricao:'Praticar transferência sentado-em-pé com controle do tronco e apoio conforme necessidade.'},
-      {nome:'Marcha orientada à tarefa',descricao:'Praticar deslocamento em ambiente seguro, progredindo distância, velocidade e complexidade conforme capacidade.'},
-      {nome:'Alcance funcional do membro superior',descricao:'Alcançar objetos em diferentes direções para estimular uso do membro afetado em tarefa significativa.'},
-      {nome:'Transferência de peso em pé',descricao:'Deslocar o peso lateral e anteriormente/posteriormente com apoio e supervisão conforme necessidade.'}
+    nome_patologia: "AVC - Reabilitação Motora",
+    regiao_corpo: "Neurologia",
+    palavras_chave: ["avc", "acidente vascular cerebral", "derrame", "hemiparesia", "hemiplegia", "reabilitação neurológica"],
+    sintomas: ["fraqueza muscular", "perda de mobilidade", "desequilíbrio/insegurança ao andar", "fadiga muscular", "alteração de sensibilidade"],
+    testes_ortopedicos_neurologicos: ["Fugl-Meyer", "Berg Balance Scale", "Timed Up and Go", "10 Meter Walk Test", "avaliação de força e controle motor"],
+    conduta_terapeutica: "Treino orientado à tarefa, prática repetitiva e significativa, treino de marcha e equilíbrio, fortalecimento e condicionamento conforme fase e tolerância.",
+    exercicios_especificos: [
+      { nome: "Sentar e levantar", descricao: "Treino repetitivo de transferência com foco em simetria, controle de tronco e segurança." },
+      { nome: "Alcance funcional sentado", descricao: "Alcançar objetos em diferentes direções para trabalhar controle de tronco e membro superior." },
+      { nome: "Transferência de peso em pé", descricao: "Deslocamentos controlados do peso para os lados e frente/trás com apoio adequado." },
+      { nome: "Marcha com pistas externas", descricao: "Prática de passos utilizando marcações visuais ou auditivas conforme necessidade funcional." }
     ],
-    referencias_cientificas:['Winstein CJ et al. Guidelines for Adult Stroke Rehabilitation and Recovery. Stroke.','Intercollegiate Stroke Working Party. National Clinical Guideline for Stroke.']
+    referencias_cientificas: ["Winstein CJ et al. Guidelines for Adult Stroke Rehabilitation and Recovery. Stroke.", "Intercollegiate Stroke Working Party. National Clinical Guideline for Stroke."]
   },
   {
-    nome_patologia:'Doença de Parkinson', regiao_corpo:'Neurologia',
-    palavras_chave:['Parkinson','bradicinesia','rigidez','freezing','marcha Parkinson','doença neurodegenerativa'],
-    sintomas:['rigidez matinal','fraqueza muscular','desequilíbrio','fadiga muscular','perda de mobilidade'],
-    testes_ortopedicos_neurologicos:['Timed Up and Go','Mini-BESTest','10 Meter Walk Test','Five Times Sit-to-Stand','avaliação de freezing e marcha'],
-    conduta_terapeutica:['Exercício aeróbico e de força conforme capacidade.','Treino de equilíbrio e mobilidade.','Estratégias externas para marcha e freezing.','Treino orientado à tarefa e dupla tarefa conforme segurança.'],
-    exercicios_especificos:[
-      {nome:'Amplitude de movimento ampla',descricao:'Movimentos amplos de membros e tronco em tarefas funcionais, com pistas verbais/visuais quando úteis.'},
-      {nome:'Sentar e levantar',descricao:'Repetir transferência com foco em amplitude, velocidade adequada e segurança.'},
-      {nome:'Marcha com pistas externas',descricao:'Usar marcações visuais ou ritmo sonoro para facilitar comprimento e regularidade dos passos quando indicado.'},
-      {nome:'Treino de equilíbrio multidirecional',descricao:'Deslocar o centro de massa em diferentes direções com apoio próximo e progressão individualizada.'}
+    nome_patologia: "Doença de Parkinson",
+    regiao_corpo: "Neurologia",
+    palavras_chave: ["parkinson", "doença de parkinson", "bradicinesia", "rigidez", "marcha parkinsoniana", "freezing"],
+    sintomas: ["rigidez matinal", "fraqueza muscular", "desequilíbrio/insegurança ao andar", "fadiga muscular", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["Timed Up and Go", "Mini-BESTest", "10 Meter Walk Test", "teste de dupla tarefa", "avaliação de freezing"],
+    conduta_terapeutica: "Treino de amplitude, estratégias de cueing, treino de marcha e equilíbrio, fortalecimento e condicionamento aeróbico adaptados ao estágio da doença.",
+    exercicios_especificos: [
+      { nome: "Movimentos amplos tipo LSVT BIG", descricao: "Movimentos amplos e deliberados de membros e tronco, preferencialmente estruturados por profissional treinado." },
+      { nome: "Marcha com pistas visuais", descricao: "Caminhada utilizando linhas ou alvos visuais para facilitar comprimento e ritmo dos passos." },
+      { nome: "Transferências sentado-em-pé", descricao: "Repetição de transferência com preparação postural e pistas externas." }
     ],
-    referencias_cientificas:['Keus SHJ et al. European Physiotherapy Guideline for Parkinson’s Disease.','Radder DLM et al. Physiotherapy in Parkinson disease: a meta-analysis.']
+    referencias_cientificas: ["Keus SHJ et al. European Physiotherapy Guideline for Parkinson's Disease.", "Tomlinson CL et al. Physiotherapy intervention in Parkinson's disease. Cochrane."]
   },
   {
-    nome_patologia:'Esclerose Múltipla', regiao_corpo:'Neurologia',
-    palavras_chave:['esclerose múltipla','EM','fadiga neurológica','desmielinização','equilíbrio EM'],
-    sintomas:['fadiga muscular','fraqueza muscular','desequilíbrio','alteração de sensibilidade','perda de mobilidade'],
-    testes_ortopedicos_neurologicos:['Timed 25-Foot Walk','6 Minute Walk Test','Berg Balance Scale','Multiple Sclerosis Walking Scale quando disponível'],
-    conduta_terapeutica:['Exercício aeróbico e resistido individualizado.','Manejo de fadiga e conservação de energia.','Treino de equilíbrio e marcha.','Atenção à termossensibilidade e recuperação entre esforços.'],
-    exercicios_especificos:[
-      {nome:'Caminhada intervalada',descricao:'Alternar períodos curtos de caminhada e recuperação conforme tolerância à fadiga.'},
-      {nome:'Fortalecimento de membros inferiores',descricao:'Exercícios resistidos para quadríceps, glúteos e panturrilha com volume individualizado.'},
-      {nome:'Equilíbrio com apoio próximo',descricao:'Treinar mudanças de base e transferência de peso com ambiente seguro.'}
+    nome_patologia: "Esclerose Múltipla",
+    regiao_corpo: "Neurologia",
+    palavras_chave: ["esclerose múltipla", "esclerose multipla", "fadiga", "espasticidade", "neurologia"],
+    sintomas: ["fadiga muscular", "fraqueza muscular", "alteração de sensibilidade", "desequilíbrio/insegurança ao andar", "perda de mobilidade", "baixa tolerância ao esforço"],
+    testes_ortopedicos_neurologicos: ["Timed 25-Foot Walk", "6-Minute Walk Test", "Berg", "teste de fadiga", "avaliação de equilíbrio"],
+    conduta_terapeutica: "Exercício aeróbico e resistido individualizado, manejo de fadiga, conservação de energia, equilíbrio e funcionalidade.",
+    exercicios_especificos: [
+      { nome: "Caminhada intervalada", descricao: "Blocos curtos de caminhada intercalados com pausas, ajustados à fadiga e tolerância." },
+      { nome: "Fortalecimento de membros inferiores", descricao: "Exercícios resistidos para quadríceps, glúteos e panturrilha com controle de volume." },
+      { nome: "Treino de equilíbrio com apoio", descricao: "Transferência de peso e desafios graduais de equilíbrio com suporte de segurança." }
     ],
-    referencias_cientificas:['Motl RW et al. Exercise in multiple sclerosis. Lancet Neurol.','National Multiple Sclerosis Society. Rehabilitation and exercise resources.']
+    referencias_cientificas: ["Latimer-Cheung AE et al. Exercise guidelines for multiple sclerosis.", "National Multiple Sclerosis Society. Rehabilitation and exercise resources."]
   },
   {
-    nome_patologia:'Lesão Medular — Reabilitação Funcional', regiao_corpo:'Neurologia',
-    palavras_chave:['lesão medular','paraplegia','tetraplegia','lesão espinhal','reabilitação medular'],
-    sintomas:['fraqueza muscular','alteração de sensibilidade','perda de mobilidade','desequilíbrio'],
-    testes_ortopedicos_neurologicos:['ISNCSCI/ASIA','Wheelchair Skills Test quando indicado','avaliação funcional de transferências','teste de força e amplitude'],
-    conduta_terapeutica:['Treino de transferências e mobilidade funcional.','Fortalecimento de músculos preservados.','Treino de equilíbrio sentado/em pé conforme nível de lesão.','Condicionamento e prevenção de complicações secundárias.'],
-    exercicios_especificos:[
-      {nome:'Treino de transferência leito-cadeira',descricao:'Praticar sequência de transferência com técnica adequada e equipamento compatível.'},
-      {nome:'Fortalecimento de membros superiores',descricao:'Exercícios resistidos para músculos necessários às transferências e propulsão da cadeira.'},
-      {nome:'Equilíbrio sentado',descricao:'Deslocar o tronco e retornar ao centro mantendo estabilidade em superfície segura.'}
+    nome_patologia: "Lesão Medular - Reabilitação Funcional",
+    regiao_corpo: "Neurologia",
+    palavras_chave: ["lesão medular", "lesao medular", "paraplegia", "tetraplegia", "reabilitação medular"],
+    sintomas: ["fraqueza muscular", "alteração de sensibilidade", "perda de mobilidade", "desequilíbrio/insegurança ao andar", "fadiga muscular"],
+    testes_ortopedicos_neurologicos: ["ISNCSCI/ASIA", "teste de força segmentar", "avaliação de sensibilidade", "Wheelchair Skills Test quando indicado"],
+    conduta_terapeutica: "Treino funcional e de transferências, fortalecimento da musculatura preservada, condicionamento e treino de mobilidade conforme nível neurológico e objetivos.",
+    exercicios_especificos: [
+      { nome: "Treino de transferência", descricao: "Prática de transferência cama-cadeira ou cadeira-superfície com técnica e equipamentos adequados." },
+      { nome: "Fortalecimento de membros superiores", descricao: "Exercícios resistidos para musculatura necessária à propulsão e transferências." },
+      { nome: "Treino de equilíbrio sentado", descricao: "Deslocamentos controlados do tronco e alcance funcional em sedestação." }
     ],
-    referencias_cientificas:['SCIRE Project. Spinal Cord Injury Rehabilitation Evidence.','Consortium for Spinal Medicine. Clinical practice guidelines for SCI rehabilitation.']
+    referencias_cientificas: ["SCIRE Professional. Spinal Cord Injury Rehabilitation Evidence.", "Kirshblum SC et al. International Standards for Neurological Classification of Spinal Cord Injury."]
   },
   {
-    nome_patologia:'Neuropatia Periférica Associada ao Diabetes', regiao_corpo:'Neurologia',
-    palavras_chave:['neuropatia diabética','pé diabético neuropático','polineuropatia','parestesia pés','diabetes neuropatia'],
-    sintomas:['parestesia','alteração de sensibilidade','fraqueza muscular','desequilíbrio','dor neuropática'],
-    testes_ortopedicos_neurologicos:['monofilamento de 10 g','vibração com diapasão quando disponível','reflexo aquileu','avaliação de força e equilíbrio'],
-    conduta_terapeutica:['Educação e inspeção dos pés.','Exercício de força e equilíbrio conforme risco.','Treino de marcha e prevenção de quedas.','Atenção a integridade cutânea e calçados.'],
-    exercicios_especificos:[
-      {nome:'Elevação de panturrilha com apoio',descricao:'Fortalecer tríceps sural mantendo apoio estável e monitorando segurança do pé.'},
-      {nome:'Equilíbrio em base ampla',descricao:'Treinar controle postural inicialmente com apoio e progressão conforme segurança.'},
-      {nome:'Marcha funcional supervisionada',descricao:'Praticar deslocamentos e obstáculos simples com atenção à integridade dos pés.'}
+    nome_patologia: "Neuropatia Periférica Associada ao Diabetes",
+    regiao_corpo: "Neurologia",
+    palavras_chave: ["neuropatia diabética", "diabetes", "pé diabético", "parestesia", "sensibilidade plantar"],
+    sintomas: ["parestesia", "dor neuropática", "fraqueza muscular", "alteração de sensibilidade", "desequilíbrio/insegurança ao andar"],
+    testes_ortopedicos_neurologicos: ["monofilamento de 10 g", "sensibilidade vibratória", "reflexo aquileu", "avaliação da pele e pés", "teste de equilíbrio"],
+    conduta_terapeutica: "Educação para autocuidado dos pés, exercício individualizado, treino de equilíbrio e força e monitoramento de tolerância ao esforço e integridade cutânea.",
+    exercicios_especificos: [
+      { nome: "Mobilidade ativa de tornozelo", descricao: "Flexão dorsal e plantar e círculos de tornozelo em amplitude confortável." },
+      { nome: "Elevação de panturrilha com apoio", descricao: "Fortalecimento progressivo da panturrilha utilizando apoio para segurança." },
+      { nome: "Equilíbrio com base ampla", descricao: "Treino de estabilidade em posição segura, progredindo somente quando necessário e tolerado." }
     ],
-    referencias_cientificas:['American Diabetes Association. Standards of Care in Diabetes — foot care and physical activity sections.','Tesfaye S et al. Diabetic neuropathies: update on definition, diagnostic criteria and estimation of severity. Diabetes Care.']
+    referencias_cientificas: ["American Diabetes Association. Standards of Care in Diabetes.", "IWGDF. Guidelines on prevention and management of diabetic foot disease."]
   },
   {
-    nome_patologia:'Acidente Vascular Cerebral — Fase Aguda/Subaguda', regiao_corpo:'Neurologia',
-    palavras_chave:['AVC agudo','AVC subagudo','hemiparesia','mobilização precoce','reabilitação AVC'],
-    sintomas:['fraqueza muscular','alteração de sensibilidade','desequilíbrio','fadiga muscular'],
-    testes_ortopedicos_neurologicos:['NIHSS em contexto multiprofissional','Fugl-Meyer','avaliação de mobilidade e controle de tronco','triagem de deglutição/consciência pela equipe quando pertinente'],
-    conduta_terapeutica:['Mobilização e atividade devem respeitar estabilidade clínica e protocolos institucionais.','Treino orientado à tarefa conforme capacidade.','Posicionamento e prevenção de complicações.','Progressão de mobilidade, transferências e marcha conforme segurança.'],
-    exercicios_especificos:[
-      {nome:'Controle de tronco sentado',descricao:'Treinar alinhamento e deslocamentos de tronco em sedestação com suporte conforme necessidade.'},
-      {nome:'Transferência sentado-em-pé',descricao:'Praticar a transição com assistência adequada e monitorização clínica.'},
-      {nome:'Alcance em sedestação',descricao:'Alcançar objetos em diferentes direções para estimular controle postural e função.'}
+    nome_patologia: "Síndrome Dolorosa do Manguito Rotador",
+    regiao_corpo: "Ombro e Cotovelo",
+    palavras_chave: ["manguito rotador", "tendinopatia ombro", "supraespinal", "dor ao elevar braço", "ombro"],
+    sintomas: ["dor articular", "fraqueza muscular", "perda de mobilidade"],
+    testes_ortopedicos_neurologicos: ["Jobe/empty can", "full can", "external rotation resistance", "drop arm quando indicado"],
+    conduta_terapeutica: "Exercício progressivo do manguito e musculatura escapular, manejo de carga e recuperação gradual da função.",
+    exercicios_especificos: [
+      { nome: "Rotação externa com elástico", descricao: "Rotação externa contra resistência leve, mantendo controle do úmero." },
+      { nome: "Elevação assistida", descricao: "Elevação do braço com auxílio da outra mão ou bastão, respeitando irritabilidade." },
+      { nome: "Remada com elástico", descricao: "Fortalecimento dos músculos escapulares com movimento controlado." }
     ],
-    referencias_cientificas:['Powers WJ et al. Guidelines for the Early Management of Acute Ischemic Stroke. Stroke.','Winstein CJ et al. Guidelines for Adult Stroke Rehabilitation and Recovery. Stroke.']
+    referencias_cientificas: ["Littlewood C et al. Rotator cuff related shoulder pain and exercise therapy.", "AAOS. Management of Rotator Cuff Injuries."]
+  },
+  {
+    nome_patologia: "Osteoartrite de Joelho com Limitação Funcional",
+    regiao_corpo: "Joelho e Quadril",
+    palavras_chave: ["gonartrose", "artrose joelho", "dor subir escada", "rigidez joelho", "fraqueza quadriceps"],
+    sintomas: ["dor articular", "rigidez matinal", "fraqueza muscular", "crepitação articular", "baixa tolerância ao esforço"],
+    testes_ortopedicos_neurologicos: ["30-second chair stand", "Timed Up and Go", "força de quadríceps", "amplitude de flexão/extensão"],
+    conduta_terapeutica: "Programa progressivo de força e capacidade aeróbica, treinamento funcional e educação para autogerenciamento.",
+    exercicios_especificos: [
+      { nome: "Extensão de joelho sentado", descricao: "Extensão do joelho contra gravidade ou resistência leve, com controle." },
+      { nome: "Miniagachamento apoiado", descricao: "Flexão parcial dos joelhos usando apoio, priorizando controle e segurança." },
+      { nome: "Caminhada intervalada", descricao: "Períodos curtos de caminhada com pausas e progressão de volume." }
+    ],
+    referencias_cientificas: ["NICE. Osteoarthritis in over 16s: diagnosis and management.", "Bannuru RR et al. OARSI guidelines for non-surgical management of knee osteoarthritis."]
   }
 ];
 
-window.SCIENTIFIC_DATABASE = SCIENTIFIC_DATABASE;
+window.FISIO90S_DATABASE = DATABASE;

@@ -1,21 +1,23 @@
-# Fisio+
+# Fisio90s ¬ Fisioterapia Offline
 
-PWA offline-first em HTML/CSS/JavaScript puro para consulta educacional e gerenciamento local de pacientes.
+PWA Vanilla JS para GitHub Pages. O aplicativo usa IndexedDB local, não possui senha e separa pacientes e pesquisas por `@usuário`.
 
 ## Arquivos
-- `index.html` — interface
-- `style.css` — identidade visual responsiva
-- `app.js` — IndexedDB, autenticação local sem senha, buscas, histórico, pacientes, adaptações e instalação
-- `database.js` — base científica estática
-- `manifest.json` — configuração PWA
-- `sw.js` — cache offline
-- `logo-placeholder.png` — substitua pela sua logo mantendo o mesmo nome
+- index.html
+- style.css
+- app.js
+- database.js
+- manifest.json
+- sw.js
+- logo-placeholder.png
 
-## Executar
-Publique no GitHub Pages ou use um servidor local (ex.: Live Server). Não abra por `file://`, porque Service Worker e algumas APIs do navegador exigem contexto seguro/servidor.
+## Publicação
+Envie todos os arquivos para um repositório do GitHub e ative GitHub Pages. O primeiro acesso precisa de internet para baixar os arquivos; depois do cache do Service Worker, a aplicação funciona offline.
 
-## Privacidade e segurança
-Os dados dos pacientes ficam no IndexedDB do navegador e são separados por `@usuário`. Esta versão não possui servidor, sincronização entre dispositivos, recuperação de senha ou criptografia de prontuário. Para uso real com dados pessoais/sensíveis, valide requisitos de LGPD, segurança, backup e governança antes de produção.
+Para testar corretamente o PWA localmente, use um servidor HTTP (por exemplo, Live Server), não abra o `index.html` diretamente com `file://`.
 
-## Banco científico
-O conteúdo é uma base educacional estática. Referências e condutas devem ser revisadas antes de uso acadêmico ou clínico. O aplicativo não substitui avaliação profissional, protocolos institucionais ou julgamento clínico.
+## Logo
+Substitua `logo-placeholder.png` pela sua própria logo mantendo o mesmo nome e caminho.
+
+## Observação clínica
+A base é um recurso educacional e de consulta rápida. A seleção final de exercícios, intensidade, volume e progressão deve ser individualizada por profissional habilitado.
